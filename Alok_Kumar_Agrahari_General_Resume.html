@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alok Kumar Agrahari - General Resume (AI & Computer Science)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #4338ca;
+      --text: #1e293b;
+      --text-muted: #475569;
+      --border: #cbd5e1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text);
+      background: #f8fafc;
+      padding: 20px;
+      line-height: 1.45;
+    }
+    .resume-container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .header {
+      text-align: center;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+    }
+    .contact-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 12px;
+      margin-top: 8px;
+      color: var(--text-muted);
+    }
+    .contact-bar a {
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .section-title {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--primary);
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 3px;
+      margin-top: 14px;
+      margin-bottom: 10px;
+    }
+    .item {
+      margin-bottom: 12px;
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .item-sub {
+      font-size: 12px;
+      color: #4f46e5;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .item-date {
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748b;
+    }
+    ul {
+      padding-left: 18px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    ul li {
+      margin-bottom: 3px;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      row-gap: 4px;
+      font-size: 12px;
+    }
+    .skill-cat {
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .no-print-bar {
+      max-width: 850px;
+      margin: 0 auto 15px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #1e293b;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+    }
+    .btn-download {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    @media print {
+      body { background: white; padding: 0; }
+      .resume-container { box-shadow: none; padding: 0; }
+      .no-print-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print-bar">
+    <div>
+      <strong>Alok Kumar Agrahari</strong> - General Resume (AI, Computer Vision & CS)
+    </div>
+    <button class="btn-download" onclick="window.print()">
+      <i class="fa-solid fa-print"></i> Print / Save as PDF
+    </button>
+  </div>
+
+  <div class="resume-container">
+    
+    <div class="header">
+      <h1>Alok Kumar Agrahari</h1>
+      <div class="contact-bar">
+        <span><i class="fa-solid fa-phone"></i> +91-9151586400</span>
+        <span><i class="fa-solid fa-envelope"></i> <a href="mailto:alok2882006@gmail.com">alok2882006@gmail.com</a></span>
+        <span><i class="fa-brands fa-linkedin"></i> <a href="https://linkedin.com/in/alok-agrahari" target="_blank">linkedin.com/in/alok-agrahari</a></span>
+        <span><i class="fa-brands fa-github"></i> <a href="https://github.com/Alokagrahari45" target="_blank">github.com/Alokagrahari45</a></span>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section-title">Skills</div>
+    <div class="skills-grid">
+      <div class="skill-cat">• Languages:</div>
+      <div>C++, C, Python</div>
+      
+      <div class="skill-cat">• Core CS:</div>
+      <div>DSA, OOP's, Computer Networks, DBMS</div>
+      
+      <div class="skill-cat">• Data Skills:</div>
+      <div>Data Analysis, Data Cleaning, EDA, Data Visualization, Machine Learning</div>
+      
+      <div class="skill-cat">• Python Libraries:</div>
+      <div>Pandas, NumPy, Matplotlib, Seaborn, OpenCV, MediaPipe</div>
+      
+      <div class="skill-cat">• Soft Skills:</div>
+      <div>Problem-Solving, Decision Making, Teamwork, Adaptability, Leadership</div>
+    </div>
+
+    <!-- INTERNSHIP -->
+    <div class="section-title">Internship</div>
+    <div class="item">
+      <div class="item-header">
+        <span>Gesture Volume Control (Hand Gesture) || Certificate</span>
+        <span class="item-date">Feb 2026 - April 2026</span>
+      </div>
+      <div class="item-sub">Intern-Infosys (Springboard Internship 6.0)</div>
+      <ul>
+        <li><strong>Project Overview:</strong> Engineered a real-time hand gesture-based volume control system enabling touchless interaction.</li>
+        <li>Leveraged computer vision techniques to detect hand movements via webcam and dynamically adjust system audio based on finger distance, enhancing usability and interactive experience.</li>
+        <li><strong>Tech:</strong> Python, OpenCV, MediaPipe</li>
+      </ul>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section-title">Projects</div>
+    
+    <div class="item">
+      <div class="item-header">
+        <span>AI & Data Science Job Market Analysis (2020-26) || GITHUB</span>
+        <span class="item-date">May 2026</span>
+      </div>
+      <ul>
+        <li>Analyzed 10,000+ job records to identify salary trends and in-demand skills using Python and EDA.</li>
+        <li>Conducted exploratory data analysis (EDA) to identify hiring patterns and market trends.</li>
+        <li>Leveraged Python, Pandas, and NumPy for efficient data manipulation and analysis.</li>
+        <li>Visualized data using Matplotlib and Seaborn to present trends in an intuitive manner.</li>
+        <li><strong>Tech:</strong> Python, Pandas, NumPy, Matplotlib, Seaborn</li>
+      </ul>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span>AI Style Bot – Web-Based Fashion Assistant Chatbot || GITHUB</span>
+        <span class="item-date">Apr 2026</span>
+      </div>
+      <ul>
+        <li>Constructed responsive frontend components using HTML, CSS, and JavaScript to deliver an interactive UI.</li>
+        <li>Orchestrated backend functionality using Python to efficiently process user queries and chatbot responses.</li>
+        <li>Engineered a web-based chatbot interface enabling real-time user interaction and personalized style recommendations.</li>
+        <li>Integrated full-stack components to enable seamless data flow, dynamic content rendering, and enhanced user experience.</li>
+        <li><strong>Tech:</strong> Python, HTML, CSS, JavaScript</li>
+      </ul>
+    </div>
+
+    <!-- CERTIFICATES -->
+    <div class="section-title">Certificates</div>
+    <ul>
+      <li>Oracle Cloud Infrastructure AI Foundations Associate || Oracle (Sep 2026)</li>
+      <li>National Level Hackathon (HACK-ADHYAAY) || Unstop (May 2026)</li>
+      <li>Infosys Springboard Virtual Internship 6.0 – Gesture Volume Control || Infosys (Apr 2026)</li>
+      <li>Programming Fundamentals using Python || Infosys (Dec 2025)</li>
+      <li>Computer Programming (72 hours) || LPU (May 2025)</li>
+      <li>Cyber Security Essentials || Tech Veda (Mar 2025)</li>
+      <li>Data Made Easy: A Comprehensive Excel Workshop || LPU (Feb 2025)</li>
+    </ul>
+
+    <!-- ACHIEVEMENTS -->
+    <div class="section-title">Achievements</div>
+    <div class="item">
+      <div class="item-header">
+        <span>National Level Hackathon (HACK-ADHYAAY) - Unstop</span>
+        <span class="item-date">May 2026</span>
+      </div>
+      <ul>
+        <li>Secured 5th Rank (Top 5) in National Level Hackathon (HACK-ADHYAAY), demonstrating strong problem-solving, teamwork, and innovation.</li>
+      </ul>
+    </div>
+    <div class="item">
+      <div class="item-header">
+        <span>Infosys Springboard Virtual Internship 6.0 – Gesture Volume Control</span>
+        <span class="item-date">Apr 2026</span>
+      </div>
+      <ul>
+        <li>Led a team as Team Leader during the Infosys Springboard Virtual Internship 6.0, secured a position among the Top 2 teams while successfully developing a real-world gesture-based volume control system.</li>
+      </ul>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section-title">Education</div>
+    <div class="item">
+      <div class="item-header">
+        <span>Lovely Professional University, Punjab, India</span>
+        <span class="item-date">Since August 2024</span>
+      </div>
+      <div style="font-size: 12px; color: var(--text-muted);">
+        Bachelor of Technology - Computer Science and Engineering; <strong>CGPA: 7.02</strong>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span>Kuruom Vidyalaya, Dhanpatganj, Sultanpur</span>
+        <span class="item-date">April 2020 - March 2021</span>
+      </div>
+      <div style="font-size: 12px; color: var(--text-muted);">
+        Intermediate; <strong>Percentage: 86.4%</strong>
+      </div>
+    </div>
+
+    <div class="item">
+      <div class="item-header">
+        <span>Kuruom Vidyalaya, Dhanpatganj, Sultanpur</span>
+        <span class="item-date">April 2022 - March 2023</span>
+      </div>
+      <div style="font-size: 12px; color: var(--text-muted);">
+        Matriculation; <strong>Percentage: 64%</strong>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

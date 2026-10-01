@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alok Kumar Agrahari | Data Science & AI Enthusiast</title>
+  <meta name="description" content="Portfolio of Alok Kumar Agrahari - Data Science & AI Enthusiast, B.Tech CSE Student, Machine Learning, Computer Vision & Full-Stack Developer." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS Play CDN for instant utility rendering -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            dark: '#0a0d14',
+            'dark-card': 'rgba(17, 24, 39, 0.75)',
+            primary: '#4f46e5',
+            'primary-light': '#818cf8',
+            accent: '#06b6d4',
+            'accent-light': '#22d3ee',
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-dark text-light antialiased selection:bg-indigo-500 selection:text-white">
+  
+  <!-- Background Glow & Interactive Canvas -->
+  <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+  <div class="fixed top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-slow"></div>
+  <div class="fixed bottom-1/4 right-10 w-96 h-96 bg-accent/15 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse-slower"></div>
+
+  <!-- Navigation Bar -->
+  <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-dark/80 border-b border-white/10 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-mono font-bold text-white shadow-lg shadow-primary/30 group-hover:scale-105 transition-transform">
+          AA
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-lg text-white group-hover:text-primary-light transition-colors">Alok Kumar</span>
+          <span class="text-xs text-slate-400 font-mono tracking-wider">AI & Data Science</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/10 px-4 py-1.5 rounded-full shadow-inner">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#certifications" class="nav-link">Certificates</a>
+        <a href="#achievements" class="nav-link">Achievements</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- CTA & Resume Button -->
+      <div class="hidden lg:flex items-center gap-3">
+        <button onclick="openResumeModal()" class="btn-secondary text-sm">
+          <i class="fa-solid fa-file-arrow-down mr-2"></i>Resume
+        </button>
+        <a href="#contact" class="btn-primary text-sm">
+          <span>Let's Connect</span>
+          <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white p-2 text-xl" aria-label="Toggle Menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-dark-card border-b border-white/10 px-6 py-6 transition-all">
+      <div class="flex flex-col gap-4">
+        <a href="#home" class="mobile-nav-link active" onclick="closeMobileMenu()">Home</a>
+        <a href="#about" class="mobile-nav-link" onclick="closeMobileMenu()">About</a>
+        <a href="#skills" class="mobile-nav-link" onclick="closeMobileMenu()">Skills</a>
+        <a href="#projects" class="mobile-nav-link" onclick="closeMobileMenu()">Projects</a>
+        <a href="#experience" class="mobile-nav-link" onclick="closeMobileMenu()">Experience</a>
+        <a href="#certifications" class="mobile-nav-link" onclick="closeMobileMenu()">Certificates</a>
+        <a href="#achievements" class="mobile-nav-link" onclick="closeMobileMenu()">Achievements</a>
+        <a href="#contact" class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a>
+        <div class="pt-4 flex flex-col gap-3 border-t border-white/10">
+          <button onclick="openResumeModal(); closeMobileMenu();" class="btn-secondary w-full justify-center">
+            <i class="fa-solid fa-file-arrow-down mr-2"></i>Download Resume
+          </button>
+          <a href="#contact" onclick="closeMobileMenu()" class="btn-primary w-full justify-center">
+            Let's Connect
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-20">
+    
+    <!-- 1. HERO SECTION -->
+    <section id="home" class="min-h-[92vh] flex items-center justify-center px-6 py-16">
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 flex flex-col gap-6">
+          
+          <!-- Status Pill -->
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono w-max">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Available for Internships & AI/Data Roles</span>
+          </div>
+
+          <!-- Headline -->
+          <div class="space-y-2">
+            <p class="text-slate-400 font-mono tracking-wide text-sm uppercase">Hello, I'm</p>
+            <h1 class="text-4xl sm:text-6xl xl:text-7xl font-display font-extrabold text-white tracking-tight leading-[1.1]">
+              Alok Kumar <br />
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-light via-accent to-purple-400">
+                Agrahari
+              </span>
+            </h1>
+            <div class="text-xl sm:text-2xl text-slate-300 font-display font-medium flex items-center gap-2 pt-2">
+              <span>Specializing in</span>
+              <span id="typing-text" class="text-primary-light border-b-2 border-primary-light pb-0.5"></span>
+              <span class="typing-cursor">|</span>
+            </div>
+          </div>
+
+          <!-- Short Intro -->
+          <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-2xl">
+            A passionate Computer Science undergraduate specializing in Data Science & AI with hands-on expertise in machine learning, exploratory data analysis, full-stack chatbot architectures, and real-time computer vision systems. Proven leadership as team lead in national hackathons and industry virtual internships.
+          </p>
+
+          <!-- Action Buttons & Socials -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#projects" class="btn-primary">
+              <i class="fa-solid fa-rocket mr-2"></i>Explore Projects
+            </a>
+            <button onclick="openResumeModal()" class="btn-secondary">
+              <i class="fa-solid fa-download mr-2"></i>Get Resume
+            </button>
+            <div class="flex items-center gap-2 pl-2 border-l border-white/10">
+              <a href="https://linkedin.com/in/alok-agrahari" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/Alokagrahari45" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub Profile">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="mailto:alok2882006@gmail.com" class="social-icon" title="Send Email">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Metrics Bar -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-white/10">
+            <div class="stat-card">
+              <span class="stat-number">10K+</span>
+              <span class="stat-label">Data Records Analyzed</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">Top 5</span>
+              <span class="stat-label">National Hackathon</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">Top 2</span>
+              <span class="stat-label">Infosys Springboard Lead</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">7.02</span>
+              <span class="stat-label">B.Tech CSE CGPA</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Visual / Interactive Card -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md">
+            
+            <!-- Glow background decorative rings -->
+            <div class="absolute -inset-1.5 bg-gradient-to-r from-primary via-accent to-purple-600 rounded-3xl blur-xl opacity-40 animate-pulse"></div>
+            
+            <div class="relative bg-dark-card border border-white/10 rounded-2xl p-6 shadow-2xl overflow-hidden">
+              
+              <!-- Top bar mimicking code editor / workspace -->
+              <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                  <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+                  <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+                </div>
+                <span class="text-xs font-mono text-slate-400">alok_developer.py</span>
+                <span class="text-xs px-2 py-0.5 rounded bg-primary/20 text-primary-light font-mono">LIVE</span>
+              </div>
+
+              <!-- Profile Card Header with Avatar -->
+              <div class="py-6 flex flex-col items-center text-center">
+                <div class="relative mb-4 group">
+                  <!-- Circular Mask Container with Glowing Gradient Ring -->
+                  <div class="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-gradient-to-tr from-primary via-accent to-purple-500 shadow-2xl shadow-primary/30 flex items-center justify-center overflow-hidden">
+                    <img 
+                      src="profile.jpg" 
+                      alt="Alok Kumar Agrahari" 
+                      class="w-full h-full rounded-full profile-avatar transition-transform duration-500 group-hover:scale-110"
+                      style="object-position: 50% 38%;"
+                    />
+                  </div>
+                  <!-- Active Status Badge -->
+                  <div class="absolute bottom-2 right-2 bg-emerald-500 w-5 h-5 rounded-full border-2 border-dark flex items-center justify-center text-[10px] text-white shadow-lg" title="Active & Available">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                </div>
+
+                <h3 class="font-display font-bold text-xl text-white">Alok Kumar Agrahari</h3>
+                <p class="text-xs text-primary-light font-mono mt-0.5">B.Tech CSE @ Lovely Professional University</p>
+                <p class="text-xs text-slate-400 mt-2 max-w-xs">Focus: Computer Vision, Applied ML, Business Analytics & Python Architectures</p>
+              </div>
+
+              <!-- Terminal Mock Box -->
+              <div class="bg-black/60 rounded-xl p-4 font-mono text-xs border border-white/5 space-y-2 text-slate-300">
+                <div class="flex items-center justify-between text-slate-500">
+                  <span>~/portfolio/skills.sh</span>
+                  <i class="fa-solid fa-terminal"></i>
+                </div>
+                <p><span class="text-emerald-400">$</span> python -c "import model, cv2, powerbi"</p>
+                <p class="text-slate-400">&gt; <span class="text-cyan-400">Model accuracy:</span> 94.8% on market data</p>
+                <p class="text-slate-400">&gt; <span class="text-purple-400">Computer Vision:</span> MediaPipe Hand Landmark Active</p>
+                <div class="flex items-center gap-2 pt-2 border-t border-white/5 text-[11px] text-slate-400">
+                  <span class="inline-flex items-center text-emerald-400"><i class="fa-solid fa-circle-check mr-1"></i> Open for Collab</span>
+                  <span class="inline-flex items-center text-blue-400"><i class="fa-solid fa-location-dot mr-1"></i> India</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TECH STACK MARQUEE STRIP -->
+    <div class="border-y border-white/10 bg-white/[0.02] py-4 overflow-hidden">
+      <div class="marquee-track flex items-center gap-10 whitespace-nowrap">
+        <span class="tech-tag"><i class="fa-brands fa-python text-yellow-400"></i> Python</span>
+        <span class="tech-tag"><i class="fa-solid fa-code text-blue-400"></i> C++</span>
+        <span class="tech-tag"><i class="fa-solid fa-chart-pie text-amber-400"></i> Power BI & DAX</span>
+        <span class="tech-tag"><i class="fa-solid fa-eye text-emerald-400"></i> OpenCV & MediaPipe</span>
+        <span class="tech-tag"><i class="fa-solid fa-table text-cyan-400"></i> Pandas & NumPy</span>
+        <span class="tech-tag"><i class="fa-solid fa-chart-line text-purple-400"></i> EDA & Data Visualization</span>
+        <span class="tech-tag"><i class="fa-solid fa-brain text-rose-400"></i> Machine Learning</span>
+        <span class="tech-tag"><i class="fa-brands fa-github text-white"></i> Git & GitHub</span>
+        <span class="tech-tag"><i class="fa-solid fa-database text-teal-400"></i> DBMS & SQL</span>
+        <span class="tech-tag"><i class="fa-brands fa-html5 text-orange-400"></i> Full-Stack Web</span>
+        
+        <!-- Duplicate for continuous animation -->
+        <span class="tech-tag"><i class="fa-brands fa-python text-yellow-400"></i> Python</span>
+        <span class="tech-tag"><i class="fa-solid fa-code text-blue-400"></i> C++</span>
+        <span class="tech-tag"><i class="fa-solid fa-chart-pie text-amber-400"></i> Power BI & DAX</span>
+        <span class="tech-tag"><i class="fa-solid fa-eye text-emerald-400"></i> OpenCV & MediaPipe</span>
+        <span class="tech-tag"><i class="fa-solid fa-table text-cyan-400"></i> Pandas & NumPy</span>
+        <span class="tech-tag"><i class="fa-solid fa-chart-line text-purple-400"></i> EDA & Data Visualization</span>
+      </div>
+    </div>
+
+    <!-- 2. ABOUT SECTION -->
+    <section id="about" class="py-24 px-6 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div class="badge-pill mb-3">
+              <i class="fa-regular fa-user mr-2 text-primary-light"></i>About Me
+            </div>
+            <h2 class="section-title">
+              Engineering Intelligent Systems <br />
+              <span class="gradient-text">Driven by Data & Innovation</span>
+            </h2>
+          </div>
+          <p class="text-slate-400 max-w-md text-sm sm:text-base leading-relaxed">
+            Passionate about transforming messy datasets into actionable intelligence and building end-to-end interactive applications that solve practical problems.
+          </p>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+          
+          <!-- Left Main Card: Story & Mindset -->
+          <div class="lg:col-span-7 glass-card p-8 flex flex-col justify-between">
+            <div class="space-y-6">
+              <div class="flex items-center gap-3 text-primary-light font-mono text-sm">
+                <i class="fa-solid fa-compass"></i>
+                <span>Background & Philosophy</span>
+              </div>
+              <h3 class="text-2xl sm:text-3xl font-display font-bold text-white leading-snug">
+                "Solving real-world problems with data analytics, computer vision, and machine learning."
+              </h3>
+              <div class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+                <p>
+                  I am a Computer Science & Engineering undergraduate at <strong>Lovely Professional University</strong> (CGPA: 7.02) with an unwavering curiosity for Data Science, Artificial Intelligence, and full-stack software development.
+                </p>
+                <p>
+                  My engineering journey is defined by hands-on execution: from parsing 10,000+ real-world employment records to discover industry hiring signals, to designing touchless human-computer interaction using OpenCV & MediaPipe in Infosys Springboard 6.0 where I led my team to a Top 2 finish.
+                </p>
+                <p>
+                  Whether conducting exploratory data analysis, building predictive analytics, or writing clean modular code in Python and C++, I focus on delivering scalable, measurable impact.
+                </p>
+              </div>
+            </div>
+
+            <!-- Key Strengths Tags -->
+            <div class="pt-8 border-t border-white/10 mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3">
+              <div class="feature-badge">
+                <i class="fa-solid fa-chart-column text-primary-light"></i>
+                <span>Data Analytics</span>
+              </div>
+              <div class="feature-badge">
+                <i class="fa-solid fa-eye text-accent"></i>
+                <span>Computer Vision</span>
+              </div>
+              <div class="feature-badge">
+                <i class="fa-solid fa-network-wired text-purple-400"></i>
+                <span>Core CS & DSA</span>
+              </div>
+              <div class="feature-badge">
+                <i class="fa-solid fa-users-gear text-emerald-400"></i>
+                <span>Team Leadership</span>
+              </div>
+              <div class="feature-badge">
+                <i class="fa-solid fa-robot text-cyan-400"></i>
+                <span>AI Chatbots</span>
+              </div>
+              <div class="feature-badge">
+                <i class="fa-solid fa-trophy text-amber-400"></i>
+                <span>Hackathon Winner</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Education Timeline & Academic Background -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            
+            <div class="glass-card p-6 flex-1">
+              <div class="flex items-center justify-between mb-6">
+                <h4 class="font-display font-bold text-lg text-white flex items-center gap-2">
+                  <i class="fa-solid fa-graduation-cap text-primary-light"></i>
+                  <span>Academic Journey</span>
+                </h4>
+                <span class="text-xs font-mono text-slate-400">Education</span>
+              </div>
+
+              <div class="space-y-6 relative border-l border-white/10 ml-3 pl-6">
+                
+                <!-- B.Tech -->
+                <div class="relative group">
+                  <div class="timeline-dot"></div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono text-primary-light">2024 - Present (Expected 2028)</span>
+                    <span class="text-xs px-2 py-0.5 rounded bg-primary/20 text-primary-light font-bold">CGPA: 7.02</span>
+                  </div>
+                  <h5 class="text-white font-semibold text-base mt-1">Bachelor of Technology - CSE</h5>
+                  <p class="text-slate-400 text-xs">Lovely Professional University, Punjab</p>
+                  <p class="text-slate-300 text-xs mt-2">Specializing in Data Science & Artificial Intelligence. Core coursework: DSA, DBMS, Computer Networks, OOPs.</p>
+                </div>
+
+                <!-- Intermediate -->
+                <div class="relative group">
+                  <div class="timeline-dot"></div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono text-slate-400">April 2020 - March 2021</span>
+                    <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">86.4%</span>
+                  </div>
+                  <h5 class="text-white font-semibold text-base mt-1">Intermediate (Class XII)</h5>
+                  <p class="text-slate-400 text-xs">Kuruom Vidyalaya, Sultanpur, UP</p>
+                  <p class="text-slate-300 text-xs mt-2">Strong foundation in Mathematics, Physics, and Analytical Logic.</p>
+                </div>
+
+                <!-- Matriculation -->
+                <div class="relative group">
+                  <div class="timeline-dot"></div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-xs font-mono text-slate-400">April 2022 - March 2023</span>
+                    <span class="text-xs px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">64.0%</span>
+                  </div>
+                  <h5 class="text-white font-semibold text-base mt-1">Matriculation (Class X)</h5>
+                  <p class="text-slate-400 text-xs">Kuruom Vidyalaya, Sultanpur, UP</p>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Quick Contact info strip in about -->
+            <div class="glass-card p-5 flex items-center justify-between bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary-light">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400 font-mono">Location</p>
+                  <p class="text-sm font-semibold text-white">Sultanpur, UP / Jalandhar, PB</p>
+                </div>
+              </div>
+              <a href="#contact" class="text-xs font-mono text-primary-light hover:underline flex items-center gap-1">
+                Say Hello <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. SKILLS SECTION -->
+    <section id="skills" class="py-24 px-6 bg-slate-950/50 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Title -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="badge-pill mb-3">
+            <i class="fa-solid fa-layer-group mr-2 text-primary-light"></i>Technical Arsenal
+          </div>
+          <h2 class="section-title">
+            Skills & Specialized <span class="gradient-text">Proficiencies</span>
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            A comprehensive overview of programming languages, machine learning frameworks, data visualization tools, and engineering methodologies I employ.
+          </p>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <!-- Category 1: Programming Languages -->
+          <div class="skill-category-card group">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap bg-yellow-500/10 text-yellow-400 border-yellow-500/20">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-white text-lg">Programming Languages</h3>
+                <span class="text-xs text-slate-400 font-mono">Core Coding Stack</span>
+              </div>
+            </div>
+            
+            <div class="space-y-4 pt-4">
+              <div class="skill-item">
+                <div class="flex justify-between text-sm mb-1.5">
+                  <span class="text-slate-200 font-medium flex items-center gap-2">
+                    <i class="fa-brands fa-python text-yellow-400"></i> Python
+                  </span>
+                  <span class="text-xs font-mono text-primary-light">Advanced</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill w-[90%]"></div></div>
+              </div>
+
+              <div class="skill-item">
+                <div class="flex justify-between text-sm mb-1.5">
+                  <span class="text-slate-200 font-medium flex items-center gap-2">
+                    <i class="fa-solid fa-file-code text-blue-400"></i> C++
+                  </span>
+                  <span class="text-xs font-mono text-primary-light">Proficient</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill w-[80%]"></div></div>
+              </div>
+
+              <div class="skill-item">
+                <div class="flex justify-between text-sm mb-1.5">
+                  <span class="text-slate-200 font-medium flex items-center gap-2">
+                    <i class="fa-solid fa-c text-slate-300"></i> C Language
+                  </span>
+                  <span class="text-xs font-mono text-primary-light">Intermediate</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill w-[75%]"></div></div>
+              </div>
+
+              <div class="skill-item">
+                <div class="flex justify-between text-sm mb-1.5">
+                  <span class="text-slate-200 font-medium flex items-center gap-2">
+                    <i class="fa-brands fa-js text-yellow-300"></i> JavaScript / HTML / CSS
+                  </span>
+                  <span class="text-xs font-mono text-primary-light">Full-Stack</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill w-[82%]"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Data Science & AI -->
+          <div class="skill-category-card group">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap bg-purple-500/10 text-purple-400 border-purple-500/20">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-white text-lg">Data Science & AI</h3>
+                <span class="text-xs text-slate-400 font-mono">Intelligence & Analytics</span>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 pt-4">
+              <span class="skill-tag"><i class="fa-solid fa-chart-pie text-purple-400"></i> Data Analysis</span>
+              <span class="skill-tag"><i class="fa-solid fa-broom text-cyan-400"></i> Data Cleaning</span>
+              <span class="skill-tag"><i class="fa-solid fa-magnifying-glass-chart text-emerald-400"></i> Exploratory Data Analysis (EDA)</span>
+              <span class="skill-tag"><i class="fa-solid fa-robot text-amber-400"></i> Machine Learning</span>
+              <span class="skill-tag"><i class="fa-solid fa-chart-line text-blue-400"></i> Predictive Modeling</span>
+              <span class="skill-tag"><i class="fa-solid fa-hand-dots text-pink-400"></i> Computer Vision (CV)</span>
+              <span class="skill-tag"><i class="fa-solid fa-cloud text-indigo-400"></i> OCI AI Foundations</span>
+            </div>
+          </div>
+
+          <!-- Category 3: Python Libraries -->
+          <div class="skill-category-card group">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap bg-cyan-500/10 text-cyan-400 border-cyan-500/20">
+                <i class="fa-solid fa-cubes"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-white text-lg">Python Libraries</h3>
+                <span class="text-xs text-slate-400 font-mono">Frameworks & Modules</span>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-2.5 pt-4">
+              <div class="tool-pill"><i class="fa-solid fa-table text-blue-400"></i> Pandas</div>
+              <div class="tool-pill"><i class="fa-solid fa-square-root-variable text-cyan-400"></i> NumPy</div>
+              <div class="tool-pill"><i class="fa-solid fa-chart-simple text-amber-400"></i> Matplotlib</div>
+              <div class="tool-pill"><i class="fa-solid fa-wave-square text-emerald-400"></i> Seaborn</div>
+              <div class="tool-pill"><i class="fa-solid fa-eye text-rose-400"></i> OpenCV</div>
+              <div class="tool-pill"><i class="fa-solid fa-hand text-purple-400"></i> MediaPipe</div>
+              <div class="tool-pill"><i class="fa-solid fa-gear text-yellow-400"></i> Scikit-Learn</div>
+              <div class="tool-pill"><i class="fa-solid fa-microchip text-indigo-400"></i> PyAutoGUI</div>
+            </div>
+          </div>
+
+          <!-- Category 4: Tools & Technologies -->
+          <div class="skill-category-card group">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap bg-amber-500/10 text-amber-400 border-amber-500/20">
+                <i class="fa-solid fa-toolbox"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-white text-lg">Tools & Technologies</h3>
+                <span class="text-xs text-slate-400 font-mono">Productivity & BI</span>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-2.5 pt-4">
+              <div class="tool-pill"><i class="fa-solid fa-chart-pie text-amber-400"></i> Power BI</div>
+              <div class="tool-pill"><i class="fa-solid fa-file-excel text-emerald-400"></i> MS Excel & DAX</div>
+              <div class="tool-pill"><i class="fa-brands fa-git-alt text-orange-500"></i> Git & GitHub</div>
+              <div class="tool-pill"><i class="fa-solid fa-code text-blue-400"></i> VS Code</div>
+              <div class="tool-pill"><i class="fa-solid fa-database text-teal-400"></i> MySQL / DBMS</div>
+              <div class="tool-pill"><i class="fa-solid fa-rocket text-purple-400"></i> Antigravity</div>
+            </div>
+          </div>
+
+          <!-- Category 5: Core CS Concepts -->
+          <div class="skill-category-card group">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap bg-blue-500/10 text-blue-400 border-blue-500/20">
+                <i class="fa-solid fa-laptop-code"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-white text-lg">Core CS Fundamentals</h3>
+                <span class="text-xs text-slate-400 font-mono">Theoretical & Applied</span>
+              </div>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 pt-4">
+              <span class="skill-tag"><i class="fa-solid fa-sitemap text-blue-400"></i> Data Structures & Algorithms</span>
+              <span class="skill-tag"><i class="fa-solid fa-shapes text-purple-400"></i> OOPs Concepts</span>
+              <span class="skill-tag"><i class="fa-solid fa-database text-emerald-400"></i> DBMS & SQL</span>
+              <span class="skill-tag"><i class="fa-solid fa-network-wired text-cyan-400"></i> Computer Networks</span>
+              <span class="skill-tag"><i class="fa-solid fa-shield-halved text-rose-400"></i> Cybersecurity Essentials</span>
+            </div>
+          </div>
+
+          <!-- Category 6: Soft Skills & Leadership -->
+          <div class="skill-category-card group">
+            <div class="skill-card-header">
+              <div class="skill-icon-wrap bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+                <i class="fa-solid fa-user-group"></i>
+              </div>
+              <div>
+                <h3 class="font-display font-bold text-white text-lg">Leadership & Soft Skills</h3>
+                <span class="text-xs text-slate-400 font-mono">Collaboration & Delivery</span>
+              </div>
+            </div>
+            
+            <div class="space-y-3 pt-4 text-sm text-slate-300">
+              <div class="flex items-center gap-3 p-2 rounded-lg bg-white/[0.02] border border-white/5">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span><strong>Team Leadership:</strong> Led Infosys Springboard team to Top 2</span>
+              </div>
+              <div class="flex items-center gap-3 p-2 rounded-lg bg-white/[0.02] border border-white/5">
+                <span class="w-2 h-2 rounded-full bg-primary-light"></span>
+                <span><strong>Analytical Problem-Solving:</strong> 5th Rank in Hackathon</span>
+              </div>
+              <div class="flex items-center gap-3 p-2 rounded-lg bg-white/[0.02] border border-white/5">
+                <span class="w-2 h-2 rounded-full bg-accent"></span>
+                <span><strong>Strategic Decision Making & Adaptability</strong></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. PROJECTS SECTION -->
+    <section id="projects" class="py-24 px-6 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <div class="badge-pill mb-3">
+              <i class="fa-solid fa-folder-open mr-2 text-primary-light"></i>Featured Portfolio
+            </div>
+            <h2 class="section-title">
+              Engineered Real-World <br />
+              <span class="gradient-text">Projects & AI Solutions</span>
+            </h2>
+          </div>
+          
+          <!-- Category Filters -->
+          <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-white/[0.03] border border-white/10" id="project-filters">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="analytics">Data & BI</button>
+            <button class="filter-btn" data-filter="ai">AI & Vision</button>
+            <button class="filter-btn" data-filter="web">Web & Chatbot</button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
+          
+          <!-- Project 1: Car Sales Analytics Dashboard -->
+          <div class="project-card group" data-category="analytics">
+            <div class="project-card-banner bg-gradient-to-tr from-amber-600/30 via-slate-900 to-slate-950">
+              <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+              <div class="project-badge bg-amber-500/20 text-amber-300 border-amber-500/30">
+                <i class="fa-solid fa-chart-pie mr-1.5"></i> Power BI / DAX
+              </div>
+              <div class="project-preview-icon text-amber-400 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-chart-line text-5xl"></i>
+              </div>
+            </div>
+
+            <div class="p-7 flex flex-col justify-between flex-1">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+                  <span>May 2026 - June 2026</span>
+                  <span class="text-amber-400 font-semibold">Business Intelligence</span>
+                </div>
+                
+                <h3 class="text-2xl font-display font-bold text-white group-hover:text-primary-light transition-colors">
+                  Car Sales Analytics Dashboard
+                </h3>
+                
+                <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                  Engineered an interactive enterprise-grade car sales dashboard to uncover revenue trends, sales representative performance, and customer buying behavior through advanced KPIs and DAX measures.
+                </p>
+
+                <ul class="mt-4 space-y-2 text-xs text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-amber-400 mt-0.5"></i>
+                    <span>Optimized raw sales records by executing Power Query ETL pipelines.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-amber-400 mt-0.5"></i>
+                    <span>Synthesized complex datasets into intuitive visual reports (KPIs, dynamic slicers, real-time metrics).</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-6 border-t border-white/10 mt-6 flex items-center justify-between">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="tag">Power BI</span>
+                  <span class="tag">Power Query</span>
+                  <span class="tag">DAX</span>
+                  <span class="tag">MS Excel</span>
+                </div>
+                <a href="https://github.com/Alokagrahari45" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: AI & Data Science Job Market Analysis -->
+          <div class="project-card group" data-category="analytics">
+            <div class="project-card-banner bg-gradient-to-tr from-cyan-600/30 via-slate-900 to-slate-950">
+              <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+              <div class="project-badge bg-cyan-500/20 text-cyan-300 border-cyan-500/30">
+                <i class="fa-brands fa-python mr-1.5"></i> 10,000+ Records EDA
+              </div>
+              <div class="project-preview-icon text-cyan-400 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-database text-5xl"></i>
+              </div>
+            </div>
+
+            <div class="p-7 flex flex-col justify-between flex-1">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+                  <span>April 2026 - May 2026</span>
+                  <span class="text-cyan-400 font-semibold">Data Science & EDA</span>
+                </div>
+                
+                <h3 class="text-2xl font-display font-bold text-white group-hover:text-primary-light transition-colors">
+                  AI & Data Science Job Market Analysis (2020-26)
+                </h3>
+                
+                <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                  Conducted comprehensive exploratory data analysis (EDA) on 10,000+ global job postings to identify macroeconomic salary distributions, emerging tech stacks, and industry demand fluctuations.
+                </p>
+
+                <ul class="mt-4 space-y-2 text-xs text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+                    <span>Leveraged Pandas and NumPy for high-throughput data cleaning and statistical aggregation.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-cyan-400 mt-0.5"></i>
+                    <span>Visualized multivariate correlation matrices using Matplotlib and Seaborn heatmaps.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-6 border-t border-white/10 mt-6 flex items-center justify-between">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="tag">Python</span>
+                  <span class="tag">Pandas</span>
+                  <span class="tag">NumPy</span>
+                  <span class="tag">Matplotlib</span>
+                  <span class="tag">Seaborn</span>
+                </div>
+                <a href="https://github.com/Alokagrahari45" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: AI Style Bot -->
+          <div class="project-card group" data-category="web">
+            <div class="project-card-banner bg-gradient-to-tr from-purple-600/30 via-slate-900 to-slate-950">
+              <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+              <div class="project-badge bg-purple-500/20 text-purple-300 border-purple-500/30">
+                <i class="fa-solid fa-robot mr-1.5"></i> Full-Stack Chatbot
+              </div>
+              <div class="project-preview-icon text-purple-400 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-comments text-5xl"></i>
+              </div>
+            </div>
+
+            <div class="p-7 flex flex-col justify-between flex-1">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+                  <span>March 2026 - April 2026</span>
+                  <span class="text-purple-400 font-semibold">AI Assistant</span>
+                </div>
+                
+                <h3 class="text-2xl font-display font-bold text-white group-hover:text-primary-light transition-colors">
+                  AI Style Bot – Web-Based Fashion Assistant
+                </h3>
+                
+                <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                  Engineered an interactive, full-stack intelligent assistant offering real-time conversational styling recommendations, wardrobe matching heuristics, and dynamic response generation.
+                </p>
+
+                <ul class="mt-4 space-y-2 text-xs text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-purple-400 mt-0.5"></i>
+                    <span>Crafted responsive frontend interface with modern CSS & vanilla JavaScript interactions.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-purple-400 mt-0.5"></i>
+                    <span>Orchestrated Python backend service for natural query processing and contextual replies.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-6 border-t border-white/10 mt-6 flex items-center justify-between">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="tag">Python</span>
+                  <span class="tag">HTML5</span>
+                  <span class="tag">CSS3</span>
+                  <span class="tag">JavaScript</span>
+                </div>
+                <a href="https://github.com/Alokagrahari45" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Gesture Volume Control System -->
+          <div class="project-card group" data-category="ai">
+            <div class="project-card-banner bg-gradient-to-tr from-emerald-600/30 via-slate-900 to-slate-950">
+              <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+              <div class="project-badge bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
+                <i class="fa-solid fa-hand mr-1.5"></i> Computer Vision
+              </div>
+              <div class="project-preview-icon text-emerald-400 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-video text-5xl"></i>
+              </div>
+            </div>
+
+            <div class="p-7 flex flex-col justify-between flex-1">
+              <div>
+                <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-2">
+                  <span>Feb 2026 - April 2026</span>
+                  <span class="text-emerald-400 font-semibold">Human-Computer Interaction</span>
+                </div>
+                
+                <h3 class="text-2xl font-display font-bold text-white group-hover:text-primary-light transition-colors">
+                  Gesture Volume Control System
+                </h3>
+                
+                <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                  Engineered a low-latency, touchless computer vision application that detects 21 hand landmarks in real-time and dynamically controls system master audio based on thumb-index finger proximity.
+                </p>
+
+                <ul class="mt-4 space-y-2 text-xs text-slate-400">
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                    <span>Implemented MediaPipe Hand tracking with OpenCV frames at 30+ FPS.</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
+                    <span>Mapped Euclidean distance to Windows Core Audio API for smooth proportional volume curve.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-6 border-t border-white/10 mt-6 flex items-center justify-between">
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="tag">OpenCV</span>
+                  <span class="tag">MediaPipe</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">PyAutoGUI</span>
+                </div>
+                <a href="https://github.com/Alokagrahari45" target="_blank" rel="noopener noreferrer" class="project-link-btn" title="View Source on GitHub">
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. EXPERIENCE & LEADERSHIP SECTION -->
+    <section id="experience" class="py-24 px-6 bg-slate-950/40 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Section Header inspired by the sleek editorial snapshot in reference image -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <div class="badge-pill mb-3">
+              <i class="fa-solid fa-briefcase mr-2 text-primary-light"></i>Professional Experience
+            </div>
+            <h2 class="section-title">
+              A Snapshot of My <br />
+              <span class="gradient-text">Engineering Growth & Leadership</span>
+            </h2>
+          </div>
+          <p class="text-slate-400 max-w-md text-sm leading-relaxed">
+            Real-world internship experience leading engineering teams to deliver computer vision solutions and production-ready architectures.
+          </p>
+        </div>
+
+        <!-- Experience Table / Timeline Layout -->
+        <div class="space-y-6">
+          
+          <!-- Experience Card: Infosys Springboard -->
+          <div class="glass-card p-8 group hover:border-primary/40 transition-all">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              <!-- Left: Role & Company -->
+              <div class="lg:col-span-4">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="px-3 py-1 rounded-full bg-primary/20 text-primary-light text-xs font-mono font-semibold">
+                    Internship 6.0
+                  </span>
+                  <span class="text-xs text-slate-400 font-mono">Infosys Springboard</span>
+                </div>
+                <h3 class="text-2xl font-display font-bold text-white group-hover:text-primary-light transition-colors">
+                  Intern & Team Leader
+                </h3>
+                <p class="text-slate-400 text-sm mt-1">Project: Gesture Volume Control System</p>
+                
+                <div class="mt-4 text-xs font-mono text-slate-400 flex items-center gap-2">
+                  <i class="fa-regular fa-calendar text-primary-light"></i>
+                  <span>Feb 2026 – April 2026</span>
+                </div>
+              </div>
+
+              <!-- Middle: Detailed Achievements -->
+              <div class="lg:col-span-6 space-y-3 text-slate-300 text-sm">
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                  <p>Orchestrated end-to-end development of a real-time gesture-based volume control system enabling touchless human-computer interaction.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                  <p><strong>Team Leadership:</strong> Selected and served as Team Leader, coordinating milestones, code reviews, and project presentations, securing a <strong>Top 2 rank</strong> among all participating internship teams.</p>
+                </div>
+                <div class="flex items-start gap-3">
+                  <i class="fa-solid fa-circle-check text-emerald-400 mt-1"></i>
+                  <p>Leveraged computer vision pipelines with OpenCV & MediaPipe to detect hand landmarks and map finger distance to system audio levels dynamically.</p>
+                </div>
+              </div>
+
+              <!-- Right: Certificate / Verification Link -->
+              <div class="lg:col-span-2 flex flex-col items-start lg:items-end justify-center">
+                <a href="#certifications" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/[0.05] border border-white/10 text-white text-xs font-mono hover:bg-primary/20 hover:border-primary/40 transition-all">
+                  <span>Certificate</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. CERTIFICATIONS & ACHIEVEMENTS SECTION -->
+    <section id="certifications" class="py-24 px-6 relative">
+      <div class="max-w-7xl mx-auto">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          <!-- Certifications (Left Column 7 cols) -->
+          <div class="lg:col-span-7">
+            <div class="badge-pill mb-3">
+              <i class="fa-solid fa-certificate mr-2 text-primary-light"></i>Accreditations
+            </div>
+            <h2 class="section-title mb-8">
+              Verified <span class="gradient-text">Certifications</span>
+            </h2>
+
+            <div class="space-y-4">
+              
+              <!-- Cert 1: Oracle Cloud Infrastructure AI Foundations Associate -->
+              <div class="cert-item group">
+                <div class="cert-icon-box bg-rose-500/10 text-rose-400 border-rose-500/20">
+                  <i class="fa-solid fa-cloud"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-white font-semibold text-base group-hover:text-primary-light transition-colors">
+                      Oracle Cloud Infrastructure (OCI) AI Foundations Associate
+                    </h4>
+                    <span class="text-xs font-mono text-slate-400">Sep 2026</span>
+                  </div>
+                  <p class="text-slate-400 text-xs mt-1">Oracle University • Artificial Intelligence & Cloud Services</p>
+                </div>
+              </div>
+
+              <!-- Cert 2: National Level Hackathon (HACK-ADHYAAY) -->
+              <div class="cert-item group">
+                <div class="cert-icon-box bg-amber-500/10 text-amber-400 border-amber-500/20">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-white font-semibold text-base group-hover:text-primary-light transition-colors">
+                      National Level Hackathon (HACK-ADHYAAY)
+                    </h4>
+                    <span class="text-xs font-mono text-slate-400">May 2026</span>
+                  </div>
+                  <p class="text-slate-400 text-xs mt-1">Unstop • 24-Hour Innovation & Problem Solving Challenge</p>
+                </div>
+              </div>
+
+              <!-- Cert 3: Infosys Springboard Virtual Internship 6.0 -->
+              <div class="cert-item group">
+                <div class="cert-icon-box bg-blue-500/10 text-blue-400 border-blue-500/20">
+                  <i class="fa-solid fa-award"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-white font-semibold text-base group-hover:text-primary-light transition-colors">
+                      Infosys Springboard Virtual Internship 6.0
+                    </h4>
+                    <span class="text-xs font-mono text-slate-400">Apr 2026</span>
+                  </div>
+                  <p class="text-slate-400 text-xs mt-1">Infosys • Gesture Volume Control System & Team Leadership</p>
+                </div>
+              </div>
+
+              <!-- Cert 4: Python Programming (OOPs) -->
+              <div class="cert-item group">
+                <div class="cert-icon-box bg-yellow-500/10 text-yellow-400 border-yellow-500/20">
+                  <i class="fa-brands fa-python"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-white font-semibold text-base group-hover:text-primary-light transition-colors">
+                      Programming Fundamentals & OOPs in Python
+                    </h4>
+                    <span class="text-xs font-mono text-slate-400">Dec 2025</span>
+                  </div>
+                  <p class="text-slate-400 text-xs mt-1">Infosys • Object-Oriented Architecture, Data Handling</p>
+                </div>
+              </div>
+
+              <!-- Cert 5: Computer Programming (72 Hours) -->
+              <div class="cert-item group">
+                <div class="cert-icon-box bg-purple-500/10 text-purple-400 border-purple-500/20">
+                  <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-white font-semibold text-base group-hover:text-primary-light transition-colors">
+                      Computer Programming (72 Hours Intensive)
+                    </h4>
+                    <span class="text-xs font-mono text-slate-400">May 2025</span>
+                  </div>
+                  <p class="text-slate-400 text-xs mt-1">Lovely Professional University (LPU)</p>
+                </div>
+              </div>
+
+              <!-- Cert 6: Cyber Security Essentials -->
+              <div class="cert-item group">
+                <div class="cert-icon-box bg-emerald-500/10 text-emerald-400 border-emerald-500/20">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-white font-semibold text-base group-hover:text-primary-light transition-colors">
+                      Cyber Security Essentials
+                    </h4>
+                    <span class="text-xs font-mono text-slate-400">Mar 2025</span>
+                  </div>
+                  <p class="text-slate-400 text-xs mt-1">Tech Veda • Security Best Practices & Network Hardening</p>
+                </div>
+              </div>
+
+              <!-- Cert 7: Data Made Easy: Excel Workshop -->
+              <div class="cert-item group">
+                <div class="cert-icon-box bg-teal-500/10 text-teal-400 border-teal-500/20">
+                  <i class="fa-solid fa-file-excel"></i>
+                </div>
+                <div class="flex-1">
+                  <div class="flex items-center justify-between">
+                    <h4 class="text-white font-semibold text-base group-hover:text-primary-light transition-colors">
+                      Data Made Easy: Comprehensive Excel Workshop
+                    </h4>
+                    <span class="text-xs font-mono text-slate-400">Feb 2025</span>
+                  </div>
+                  <p class="text-slate-400 text-xs mt-1">Lovely Professional University (LPU) • Data Analysis & Visualization</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Achievements (Right Column 5 cols) -->
+          <div class="lg:col-span-5 flex flex-col gap-6" id="achievements">
+            <div>
+              <div class="badge-pill mb-3">
+                <i class="fa-solid fa-award mr-2 text-primary-light"></i>Key Milestones
+              </div>
+              <h2 class="section-title mb-8">
+                Honors & <span class="gradient-text">Achievements</span>
+              </h2>
+            </div>
+
+            <!-- Achievement Card 1 -->
+            <div class="glass-card p-6 border-amber-500/30 bg-gradient-to-b from-amber-500/5 to-transparent relative overflow-hidden group">
+              <div class="absolute -right-6 -bottom-6 text-amber-500/10 text-8xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-trophy"></i>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-400 text-xl shrink-0">
+                  <i class="fa-solid fa-trophy"></i>
+                </div>
+                <div>
+                  <span class="text-xs font-mono text-amber-400 uppercase tracking-wide">National Recognition</span>
+                  <h4 class="text-xl font-display font-bold text-white mt-1">
+                    Top 5 Rank (5th Position)
+                  </h4>
+                  <p class="text-xs text-slate-400 font-mono mt-0.5">National Level Hackathon (HACK-ADHYAAY) • May 2026</p>
+                  <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                    Secured 5th Rank at the 24-Hour National Hackathon hosted on Unstop, demonstrating high-velocity prototyping, innovative algorithmic approach, and team coordination.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Achievement Card 2 -->
+            <div class="glass-card p-6 border-primary/30 bg-gradient-to-b from-primary/5 to-transparent relative overflow-hidden group">
+              <div class="absolute -right-6 -bottom-6 text-primary/10 text-8xl group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-medal"></i>
+              </div>
+              
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 rounded-xl bg-primary/20 border border-primary/30 flex items-center justify-center text-primary-light text-xl shrink-0">
+                  <i class="fa-solid fa-users"></i>
+                </div>
+                <div>
+                  <span class="text-xs font-mono text-primary-light uppercase tracking-wide">Industry Leadership</span>
+                  <h4 class="text-xl font-display font-bold text-white mt-1">
+                    Top 2 Teams & Team Leader
+                  </h4>
+                  <p class="text-xs text-slate-400 font-mono mt-0.5">Infosys Springboard Virtual Internship 6.0 • Apr 2026</p>
+                  <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                    Led a multi-disciplinary developer team to build the real-world Gesture Volume Control system, securing a top-tier standing among hundreds of national participants.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- GitHub Highlights Widget -->
+            <div class="glass-card p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-2">
+                  <i class="fa-brands fa-github text-white"></i>
+                  <span class="text-sm font-semibold text-white">GitHub Activity</span>
+                </div>
+                <a href="https://github.com/Alokagrahari45" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-primary-light hover:underline">
+                  @Alokagrahari45 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+              
+              <div class="grid grid-cols-3 gap-3 text-center">
+                <div class="bg-white/[0.02] p-3 rounded-xl border border-white/5">
+                  <p class="text-lg font-bold text-white">4+</p>
+                  <p class="text-[11px] text-slate-400">Core Repos</p>
+                </div>
+                <div class="bg-white/[0.02] p-3 rounded-xl border border-white/5">
+                  <p class="text-lg font-bold text-emerald-400">100%</p>
+                  <p class="text-[11px] text-slate-400">Clean Code</p>
+                </div>
+                <div class="bg-white/[0.02] p-3 rounded-xl border border-white/5">
+                  <p class="text-lg font-bold text-primary-light">Active</p>
+                  <p class="text-[11px] text-slate-400">Contributions</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. CONTACT SECTION -->
+    <section id="contact" class="py-24 px-6 relative bg-slate-950/60">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Large Editorial Headline inspired by the example image "Let's Connect There" -->
+        <div class="glass-card p-8 sm:p-14 border-white/10 relative overflow-hidden">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            
+            <!-- Left Info Column -->
+            <div class="lg:col-span-5 flex flex-col justify-between">
+              <div>
+                <div class="badge-pill mb-4">
+                  <i class="fa-regular fa-paper-plane mr-2 text-primary-light"></i>Get in Touch
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-display font-extrabold text-white tracking-tight leading-tight">
+                  Let's Connect <br />
+                  <span class="gradient-text">& Build Together</span>
+                </h2>
+                
+                <p class="text-slate-400 text-sm sm:text-base mt-4 leading-relaxed">
+                  I'm always open to discussing new data science roles, computer vision projects, hackathon collaborations, or machine learning opportunities.
+                </p>
+
+                <!-- Contact Details List -->
+                <div class="space-y-4 mt-8">
+                  
+                  <a href="mailto:alok2882006@gmail.com" class="contact-info-item group">
+                    <div class="contact-info-icon">
+                      <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                      <p class="text-xs text-slate-400 font-mono">Email Address</p>
+                      <p class="text-sm font-semibold text-white group-hover:text-primary-light transition-colors">alok2882006@gmail.com</p>
+                      <p class="text-xs text-slate-500">info.alok2882006@gmail.com</p>
+                    </div>
+                  </a>
+
+                  <a href="tel:+919151586400" class="contact-info-item group">
+                    <div class="contact-info-icon">
+                      <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                      <p class="text-xs text-slate-400 font-mono">Mobile / WhatsApp</p>
+                      <p class="text-sm font-semibold text-white group-hover:text-primary-light transition-colors">+91-9151586400</p>
+                    </div>
+                  </a>
+
+                  <div class="contact-info-item">
+                    <div class="contact-info-icon">
+                      <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                      <p class="text-xs text-slate-400 font-mono">Location</p>
+                      <p class="text-sm font-semibold text-white">Sultanpur, Uttar Pradesh 228121</p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Social Links Row -->
+              <div class="flex items-center gap-3 pt-8 border-t border-white/10 mt-8">
+                <a href="https://linkedin.com/in/alok-agrahari" target="_blank" rel="noopener noreferrer" class="social-btn">
+                  <i class="fa-brands fa-linkedin-in mr-2"></i>LinkedIn
+                </a>
+                <a href="https://github.com/Alokagrahari45" target="_blank" rel="noopener noreferrer" class="social-btn">
+                  <i class="fa-brands fa-github mr-2"></i>GitHub
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Interactive Contact Form -->
+            <div class="lg:col-span-7 bg-slate-900/80 border border-white/10 rounded-2xl p-6 sm:p-8">
+              
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-white/10">
+                <div>
+                  <h3 class="text-xl font-display font-bold text-white">Send a Message</h3>
+                  <p class="text-xs text-slate-400">Directly connect with Alok via Gmail or WhatsApp</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alok2882006@gmail.com" target="_blank" class="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/25 text-red-300 text-xs font-mono hover:bg-red-500/20 transition-all flex items-center gap-1.5" title="Direct Web Gmail">
+                    <i class="fa-brands fa-google text-red-400"></i>
+                    <span>Gmail Web</span>
+                  </a>
+                  <a href="https://wa.me/919151586400?text=Hi%20Alok,%20I%20saw%20your%20portfolio" target="_blank" class="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/25 text-emerald-300 text-xs font-mono hover:bg-emerald-500/20 transition-all flex items-center gap-1.5" title="Chat on WhatsApp">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+
+              <form id="contact-form" class="space-y-4" onsubmit="handleContactSubmit(event)">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="form-group">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" id="name" name="name" required class="form-input" placeholder="e.g. John Doe" />
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="form-label">Your Email</label>
+                    <input type="email" id="email" name="email" required class="form-input" placeholder="e.g. john@example.com" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="subject" class="form-label">Subject / Purpose</label>
+                  <input type="text" id="subject" name="subject" class="form-input" placeholder="e.g. Internship Opportunity / Collaboration" />
+                </div>
+
+                <div class="form-group">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea id="message" name="message" rows="4" required class="form-input resize-none" placeholder="Write your message or inquiry here..."></textarea>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  <button type="submit" id="submit-btn" class="btn-primary justify-center py-3 text-sm">
+                    <i class="fa-brands fa-google mr-2 text-red-400"></i>
+                    <span>Send via Gmail Web</span>
+                  </button>
+                  <button type="button" onclick="sendViaWhatsApp()" class="btn-secondary justify-center py-3 text-sm text-emerald-300 hover:text-white border-emerald-500/30 hover:bg-emerald-500/10">
+                    <i class="fa-brands fa-whatsapp mr-2 text-emerald-400"></i>
+                    <span>Send via WhatsApp</span>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Success Alert -->
+              <div id="form-feedback" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-sm flex items-center gap-3">
+                <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+                <div class="flex flex-col">
+                  <span class="font-semibold text-emerald-300">Message prefilled & ready in Gmail!</span>
+                  <span class="text-xs text-slate-300 mt-0.5">Your email to alok2882006@gmail.com has been opened in your browser tab.</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-black/80 py-12 px-6 relative z-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-accent flex items-center justify-center font-mono font-bold text-white text-xs">
+          AA
+        </div>
+        <span class="text-sm font-display font-semibold text-white">Alok Kumar Agrahari</span>
+        <span class="text-xs text-slate-500 font-mono">| Portfolio 2026</span>
+      </div>
+
+      <div class="flex items-center gap-6 text-xs text-slate-400 font-mono">
+        <a href="#home" class="hover:text-white transition-colors">Home</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+        <a href="#certifications" class="hover:text-white transition-colors">Certifications</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <p class="text-xs text-slate-500">
+        Designed & Developed with <i class="fa-solid fa-heart text-rose-500"></i> by Alok Kumar Agrahari
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- RESUME MODAL -->
+  <div id="resume-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-dark-card border border-white/10 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative">
+      
+      <button onclick="closeResumeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary-light">
+          <i class="fa-solid fa-file-pdf"></i>
+        </div>
+        <div>
+          <h3 class="font-display font-bold text-white text-lg">Curriculum Vitae</h3>
+          <p class="text-xs text-slate-400">Download specialized or general resume</p>
+        </div>
+      </div>
+
+      <p class="text-sm text-slate-300 mb-6">
+        Select the CV format that best matches your recruitment requirements:
+      </p>
+
+      <div class="space-y-3">
+        <!-- Specialized CV (Data Science & Power BI) -->
+        <a href="Alok_Kumar_Agrahari_DataScience_Resume.html" target="_blank" class="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-primary/50 hover:bg-primary/5 transition-all group">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-chart-pie text-amber-400 text-lg"></i>
+            <div>
+              <p class="font-semibold text-sm text-white group-hover:text-primary-light transition-colors">Specialized CV (Data Science & Analytics)</p>
+              <p class="text-xs text-slate-400">Power BI Dashboard, Market EDA, OCI AI • Click to View & Print/Save</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-primary-light font-mono hidden sm:inline">Open & Save</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-slate-400 group-hover:text-white transition-colors"></i>
+          </div>
+        </a>
+
+        <!-- General CV (Computer Science & Full-Stack / CV) -->
+        <a href="Alok_Kumar_Agrahari_General_Resume.html" target="_blank" class="flex items-center justify-between p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-accent/50 hover:bg-accent/5 transition-all group">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-brain text-purple-400 text-lg"></i>
+            <div>
+              <p class="font-semibold text-sm text-white group-hover:text-accent-light transition-colors">General CV (AI, Computer Vision & CS)</p>
+              <p class="text-xs text-slate-400">Hackathons, Gesture Control & Full-Stack • Click to View & Print/Save</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-accent-light font-mono hidden sm:inline">Open & Save</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-slate-400 group-hover:text-white transition-colors"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-white/10 flex justify-end">
+        <button onclick="closeResumeModal()" class="btn-secondary text-xs">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
